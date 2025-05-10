@@ -1,24 +1,35 @@
 def main():
 
     def changeConverter(dollars):
-        dollars = dollars.replace('$', '') # Removes the '$' for changing type to int
-
-        ''' The try/except/else is used here in the case the user inputs a whole number instead of a float, there would only be one value. The else statment catches cases if they input something less than 1. '''
+        # Removes the '$' for changing type to int
+        dollars = dollars.replace('$', '') 
+        ''' The try/except/else is used here in the case the
+          user inputs a whole number instead of a float, there
+            would only be one value. The else statment catches
+              cases if they input something less than 1. '''
         try: 
-            dollars, cents = dollars.split('.') # Splits the dollars and cents apart
+            # Splits the dollars and cents apart
+            dollars, cents = dollars.split('.') 
         except ValueError:
             cents = 100 * int(dollars)
         else:
             if dollars != '':
-                cents = int(cents) + (int(dollars) * 100) # Combines into the change value of both dollars and cents
+                # Combines into the change value of both dollars and cents
+                cents = int(cents) + (int(dollars) * 100) 
         return int(cents)
 
     def coinDistributor(change):
-        quarters = 0 # Initialize a count for all coin types
+        # Initialize a count for all coin types
+        quarters = 0 
         dimes = 0
         nickels = 0
         pennies = 0
-        ''' A loop to check through all the coin types. Checks for all potential quarters first then goes through the other coins. Modulo operator allows for it to check through and if it isn't 0 it subtracts a penny. If it is a number like 0.07 it would remove the pennies first then the nickel. '''
+        ''' A loop to check through all the coin types.
+          Checks for all potential quarters first then goes 
+          through the other coins. Modulo operator allows for 
+          it to check through and if it isn't 0 it subtracts 
+          a penny. If it is a number like 0.07 it would remove
+            the pennies first then the nickel. '''
         while change > 0:
             if change / 25 >= 1:
                 change -= 25
